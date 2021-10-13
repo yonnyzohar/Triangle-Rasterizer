@@ -40,13 +40,17 @@
 		
 		var points: Array;
 		var g;
+		
+		var mc:MovieClip = new MovieClip();
 
 
 		public function Main() {
 			stage.addChild(bmp);
+			stage.addChild(mc);
 			stage.addChild(ctrlPo);
 			stage.addChild(ctrlP1);
 			stage.addChild(ctrlP2);
+			
 
 			ctrlPo.point = p0;
 			ctrlP1.point = p1;
@@ -69,10 +73,10 @@
 
 			points = [p0, p1, p2];
 
-			g = this.graphics;
+			g = mc.graphics;
+			mc.mouseEnabled = false;
 
-
-
+			bd.fillRect(new Rectangle(0, 0, stage.stageWidth, stage.stageHeight), 0x000000);
 			sortPoints();
 			fillTriangle();
 
@@ -90,10 +94,11 @@
 
 		function update(e: Event): void {
 			if (currCtrl) {
-				bd.fillRect(new Rectangle(0, 0, stage.stageWidth, stage.stageHeight), 0xffffff);
+				
 				var point: Object = currCtrl.point;
 				point.x = currCtrl.x = stage.mouseX;
 				point.y = currCtrl.y = stage.mouseY;
+				bd.fillRect(new Rectangle(0, 0, stage.stageWidth, stage.stageHeight), 0x000000);
 				sortPoints();
 				fillTriangle();
 			}
@@ -144,6 +149,9 @@
 
 			var p2u: Number = points[2].u;
 			var p2v: Number = points[2].v;
+			
+			
+			
 
 			//each triangle is split in 2 to make calculations easier.
 			//first we do the top part, then the bottom part
@@ -258,7 +266,19 @@
 				//the slope means - when we move y by 1, how much does x move by?
 				//so if we start at the bottom and decrease the side3Height * the slope of side 2 we will get the start point
 				var midPointSlope2: Number = p2x - (side3Height * slope2);
-
+				
+				//this is just for drawing the triangle, not part of the algorithm
+				g.clear();
+				g.lineStyle(1, 0xff0000);
+				g.moveTo(p0x, p0y);
+				g.lineTo(p1x, p1y);
+				g.lineStyle(2, 0xffcc00);
+				g.lineTo( midPointSlope2  , p1y);
+				g.lineStyle(1, 0xff0000);
+				g.lineTo(p0x, p0y);
+				g.lineTo(p2x, p2y);
+				g.lineTo(p1x, p1y);
+				//
 
 				//u length - the width of change in percentage on the u (x) axis
 				var side3uWidth: Number = (p2u - p1u);
