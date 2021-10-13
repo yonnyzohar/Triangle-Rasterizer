@@ -325,9 +325,11 @@
 						var triangleCurrWidth: Number = endX - startX;
 
 						var u: Number = startU * texW;
-						var ustep: Number = (endU - startU) / triangleCurrWidth * texW;
+						//this is the increment on the u axis
+						var ustep: Number = ((endU - startU) / triangleCurrWidth) * texW;
 						var v: Number = startV * texH;
-						var vstep: Number = (endV - startV) / triangleCurrWidth * texH;
+						//this is the increment on the v axis
+						var vstep: Number = ((endV - startV) / triangleCurrWidth) * texH;
 
 						for (var j: int = 0; j <= triangleCurrWidth; j++) {
 							var _x: int = j + startX;
