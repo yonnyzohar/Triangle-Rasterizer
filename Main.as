@@ -188,12 +188,14 @@
 					var endX: int = p0x + i * slope2; // end x grows by initial x + (i * slope2)
 
 					//u start and v start
-					var startU: Number = p0u + (i / side1Height) * side1uWidth;
-					var startV: Number = p0v + (i / side1Height) * side1vHeight;
+					var side1Per:Number = (i / side1Height);
+					var startU: Number = p0u + (side1Per * side1uWidth);
+					var startV: Number = p0v + (side1Per * side1vHeight);
 
 					//u end and v end
-					var endU: Number = p0u + i / side2Height * side2uWidth;
-					var endV: Number = p0v + i / side2Height * side2vHeight;
+					var side2Per:Number = i / side2Height;
+					var endU: Number = p0u + (side2Per * side2uWidth);
+					var endV: Number = p0v + (side2Per * side2vHeight);
 
 
 					//if start is greater than and, swap the,
@@ -212,11 +214,6 @@
 						endV = aux;
 					}
 
-					//g.moveTo(startX - 1, _y);
-					//g.lineTo(startX, _y);
-
-					//g.moveTo(endX-1, _y);
-					//g.lineTo(endX, _y);
 
 					if (endX > startX) {
 
@@ -297,12 +294,14 @@
 					var _y: Number = p1y + i;
 
 					//u start and v start
-					var startU: Number = p1u + (i / side3Height) * side3uWidth;
-					var startV: Number = p1v + (i / side3Height) * side3vHeight;
+					var side3Per:Number = (i / side3Height);
+					var startU: Number = p1u + (side3Per * side3uWidth);
+					var startV: Number = p1v + (side3Per * side3vHeight);
 
 					//u nd and v end
-					var endU: Number = p0u + ((_y - p0y) / side2Height) * side2uWidth;
-					var endV: Number = p0v + ((_y - p0y) / side2Height) * side2vHeight;
+					var side2Per:Number = (_y - p0y) / side2Height;
+					var endU: Number = p0u + (side2Per * side2uWidth);
+					var endV: Number = p0v + (side2Per * side2vHeight);
 
 
 
