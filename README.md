@@ -9,3 +9,5 @@ var midPointSlope2: Number = p2x - (side3Height * slope2);
 //
 The code for figuring out the step size of the uv mapping is also wonderful in its simplicity. It uses linear interpolation to figure out the starting and ending percentages in uv (between 0 and 1), and the required increment step from start to end values given the number of pixels to iterate over in each row.
 I made a small widget that demonstrates how each triangle is formed.
+
+https://www.facebook.com/watch/?v=3893229460776968
